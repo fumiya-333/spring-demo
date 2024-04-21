@@ -37,7 +37,7 @@ public class TaskController {
         return "tasks/create";
     }
     
-    @PostMapping
+    @PostMapping("/tasks/store")
     public String store(@Validated TaskForm form, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()){
             return create(form);
