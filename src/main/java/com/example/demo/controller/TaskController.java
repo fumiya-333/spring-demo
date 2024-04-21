@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.demo.entity.Task;
 import com.example.demo.service.impl.TaskService;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class TaskController {
 
     @Autowired
-    private TaskService taskService;
+    private final TaskService taskService;
 
     @GetMapping
     public String index(Model model) {

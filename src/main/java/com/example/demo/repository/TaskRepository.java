@@ -1,7 +1,14 @@
 package com.example.demo.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import com.example.demo.entity.Task;
 
-public interface TaskRepository extends JpaRepository<Task, Integer> {}
+@Mapper
+public interface TaskRepository {
+    @Select("select * from tasks")
+    List<Task> findAll();
+}
