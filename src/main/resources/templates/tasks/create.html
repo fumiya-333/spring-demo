@@ -28,7 +28,11 @@
             th:field="*{title}"
             id="title"
           />
-          <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+          <p
+            class="text-red-500"
+            th:if="${#fields.hasErrors('title')}"
+            th:errors="*{title}"
+          >
             (error)
           </p>
         </div>
@@ -45,6 +49,7 @@
             rows="5"
           ></textarea>
           <p
+            class="text-red-500"
             th:if="${#fields.hasErrors('description')}"
             th:errors="*{description}"
           >
