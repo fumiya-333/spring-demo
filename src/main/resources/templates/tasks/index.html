@@ -37,7 +37,11 @@
             <span th:text="${task.title}"></span>
           </td>
           <td class="px-6 py-4 whitespace-nowrap">
-            <span th:text="${task.description}"></span>
+            <a
+              class="text-blue-500 hover:text-blue-700 hover:underline"
+              th:href="@{/tasks/{taskId}(taskId=${task.id})}"
+              th:text="${task.description}"
+            ></a>
           </td>
         </tr>
       </tbody>

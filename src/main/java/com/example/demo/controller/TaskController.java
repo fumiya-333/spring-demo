@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.entity.Task;
 import com.example.demo.form.TaskForm;
@@ -16,7 +17,6 @@ import com.example.demo.service.impl.TaskService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
-
 
 @Controller
 @RequiredArgsConstructor
@@ -46,4 +46,10 @@ public class TaskController {
         return "redirect:/";
     }
     
+    @GetMapping("/tasks/{taskId}")
+    public String detail(@PathVariable("taskId") int taskId, Model model) {
+        model.addAttribute("task", taskService.findById(taskId));
+        return "tasks/detail";
+    }
+
 }
