@@ -48,8 +48,8 @@ public class TaskController {
     
     @GetMapping("/tasks/{taskId}")
     public String detail(@PathVariable("taskId") int taskId, Model model) {
-        model.addAttribute("task", taskService.findById(taskId));
+        Task task = taskService.findById(taskId);
+        model.addAttribute("task", task);
         return "tasks/detail";
     }
-
 }
