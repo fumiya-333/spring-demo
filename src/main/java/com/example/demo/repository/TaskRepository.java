@@ -15,9 +15,9 @@ public interface TaskRepository {
     @Select("select * from tasks")
     List<Task> findAll();
 
-    @Insert("insert into tasks (title, description) values (#{title}, #{description})")
-    void insert(@Param("title") String title, @Param("description") String description);
-
     @Select("select * from tasks where id = #{taskId}")
     Task findById(int taskId);
+    
+    @Insert("insert into tasks (title, description) values (#{title}, #{description})")
+    void insert(@Param("title") String title, @Param("description") String description);
 }

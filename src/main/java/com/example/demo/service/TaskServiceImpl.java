@@ -21,12 +21,12 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.findAll();
     }
 
+    public Task findById(int taskId){
+        return taskRepository.findById(taskId);
+    }
+
     @Transactional
     public void store(String title, String description){
         taskRepository.insert(title, description);
-    }
-
-    public Task findById(int taskId){
-        return taskRepository.findById(taskId);
     }
 }

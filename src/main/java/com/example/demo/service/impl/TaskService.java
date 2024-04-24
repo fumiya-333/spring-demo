@@ -9,6 +9,6 @@ import com.example.demo.entity.Task;
 @Service
 public interface TaskService {
     List<Task> findAll();
-    void store(String title, String description);
     Task findById(int taskId);
+    void store(String title, String description);
 }
