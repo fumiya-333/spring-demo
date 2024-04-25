@@ -23,15 +23,13 @@
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             th:field="*{title}"
-            id="title"
+            th:classappend="${#fields.hasErrors('title')} ? 'border-red-500' : ''"
           />
           <p
             class="text-red-500"
             th:if="${#fields.hasErrors('title')}"
             th:errors="*{title}"
-          >
-            (error)
-          </p>
+          ></p>
         </div>
         <div class="mb-6">
           <label
@@ -41,17 +39,15 @@
           >
           <textarea
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            name="description"
             th:field="*{description}"
+            th:classappend="${#fields.hasErrors('title')} ? 'border-red-500' : ''"
             rows="5"
           ></textarea>
           <p
             class="text-red-500"
             th:if="${#fields.hasErrors('description')}"
             th:errors="*{description}"
-          >
-            (error)
-          </p>
+          ></p>
         </div>
         <div class="flex items-center justify-between">
           <button
