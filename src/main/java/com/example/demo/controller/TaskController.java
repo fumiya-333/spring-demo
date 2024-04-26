@@ -64,6 +64,7 @@ public class TaskController {
         return "tasks/edit";
     }
 
+    @Transactional
     @PostMapping("/tasks/update")
     public String update(Model model, @Validated TaskForm form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -73,4 +74,12 @@ public class TaskController {
         taskService.update(form.getId(), form.getTitle(), form.getDescription());
         return "redirect:/";
     }
+
+    @Transactional
+    @PostMapping("/tasks/{taskId}/delete")
+    public String delete(@PathVariable("taskId") int taskId) {
+        taskService.delete(taskId);
+        return "redirect:/";
+    }
+
 }

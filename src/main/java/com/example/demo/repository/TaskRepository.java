@@ -2,6 +2,7 @@ package com.example.demo.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -24,4 +25,7 @@ public interface TaskRepository {
 
     @Update("update tasks set title = #{title}, description = #{description} where id = #{id}")
     void update(@Param("id") int id, @Param("title") String title, @Param("description") String description);
+
+    @Delete("delete from tasks where id = #{id}")
+    void delete(@Param("id") int id);
 }
