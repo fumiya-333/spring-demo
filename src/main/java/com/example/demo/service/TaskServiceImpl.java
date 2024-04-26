@@ -27,4 +27,8 @@ public class TaskServiceImpl implements TaskService {
     public void store(String title, String description){
         taskRepository.insert(title, description);
     }
+
+    public void update(Integer id, String title, String description){
+        taskRepository.update(id, title, description);
+    }
 }

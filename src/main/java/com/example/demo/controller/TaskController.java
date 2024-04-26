@@ -54,4 +54,23 @@ public class TaskController {
         model.addAttribute("task", task);
         return "tasks/detail";
     }
+
+    @GetMapping("/tasks/{taskId}/edit")
+    public String edit(@PathVariable("taskId") int taskId, Model model) {
+        Task task = taskService.findById(taskId);
+        TaskForm form = new TaskForm(taskId, task.getTitle(), task.getDescription());
+        
+        model.addAttribute("taskForm", form);
+        return "tasks/edit";
+    }
+
+    @PostMapping("/tasks/update")
+    public String update(Model model, @Validated TaskForm form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "tasks/edit";
+        }
+        
+        taskService.update(form.getId(), form.getTitle(), form.getDescription());
+        return "redirect:/";
+    }
 }
